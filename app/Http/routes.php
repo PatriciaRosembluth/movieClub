@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'MoviesController@index');
 
 Route::get('home', 'HomeController@index');
 
 Route::resource('movies', 'MoviesController');
+Route::resource('reviews', 'ReviewsController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

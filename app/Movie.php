@@ -6,4 +6,9 @@ class Movie extends Model {
 
 	protected $fillable = ['name', 'description'];
 
+	public function reviews()
+	{
+		return $this->hasMany('App\Review');
+	}
+
 }

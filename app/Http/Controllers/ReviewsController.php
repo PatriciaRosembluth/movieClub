@@ -2,12 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MovieRequest;
-use App\Movie;
-use Auth;
+use App\Review;
+use Request;
 
-
-class MoviesController extends Controller {
+class ReviewsController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -16,8 +14,7 @@ class MoviesController extends Controller {
 	 */
 	public function index()
 	{
-		$movies = Movie::all();
-		return view('movies.index', compact('movies'));
+		//
 	}
 
 	/**
@@ -27,7 +24,7 @@ class MoviesController extends Controller {
 	 */
 	public function create()
 	{
-		return view("movies.create");
+		//
 	}
 
 	/**
@@ -35,10 +32,10 @@ class MoviesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(MovieRequest $request)
+	public function store(Request $request)
 	{
-		$input = $request->all();
-		$movie = new Movie($input);
+		$input = $request::all();
+		Review::create($input);
 		return redirect('movies');
 	}
 
@@ -50,9 +47,7 @@ class MoviesController extends Controller {
 	 */
 	public function show($id)
 	{
-		$movie = Movie::find($id);
-
-		return view('movies.show', compact('movie'));
+		//
 	}
 
 	/**
@@ -63,8 +58,7 @@ class MoviesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$movie = Movie::find($id);
-		return view('movies.edit', compact('movie'));
+		//
 	}
 
 	/**
@@ -73,12 +67,9 @@ class MoviesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id,Request $request)
+	public function update($id)
 	{
-		$movie = Movie::find($id);
-		$input = $request::all();
-		$movie->update($input);
-		return redirect('movies');	
+		//
 	}
 
 	/**
@@ -89,8 +80,7 @@ class MoviesController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		Movie::destroy($id);
-		return redirect('movies');
+		//
 	}
 
 }

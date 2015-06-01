@@ -28,7 +28,7 @@
  
 							<div class="form-group">
 								{!! Form::textarea('description', null,
-										['class'=>'form-control', 'placeholder'=>'Body'])
+										['class'=>'form-control', 'placeholder'=>'Description'])
 								!!}
 							</div>
  
@@ -37,6 +37,8 @@
 							</div>
  
 					{!! Form::close() !!}
+					<br>
+              		<a href="/movies">Back</a>
 				</div>
 			</div>
 		</div>
