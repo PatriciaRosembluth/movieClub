@@ -9,7 +9,14 @@
                     <p width="60">{{ $movie->description}}</td><br>
                     <h3>Reviews:</h3><br>
                     @foreach ($movie->reviews as $review)
+                    Usuario: {{($review->user == null) ? 'NA' : $review->user->email}}
+					<br>
 					<p>{{$review->content}}</p>
+					
+					{!! Form::open(array('route' => array('reviews.destroy', $review->id), 'method' => 'delete')) !!}
+                    <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                    {!! Form::close() !!}
+                    
 					<br>
 					@endforeach	
 

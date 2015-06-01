@@ -4,8 +4,14 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Review;
 use App\Http\Requests\ReviewRequest;
+use Auth;
+
 
 class ReviewsController extends Controller {
+
+	public function __construct(){
+		$this->middleware('auth');
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -36,8 +42,8 @@ class ReviewsController extends Controller {
 	{
 		$input = $request->all();
 		$review = new Review($input);
-		$review->save($input);
-		return redirect('movies');
+		Auth::user()->reviews()->save($review);
+ 		return redirect('movies');
 	}
 
 	/**
@@ -81,7 +87,8 @@ class ReviewsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Review::destroy($id);
+		return redirect('movies');
 	}
 
 }
