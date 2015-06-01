@@ -39,6 +39,7 @@ class MoviesController extends Controller {
 	{
 		$input = $request->all();
 		$movie = new Movie($input);
+		$movie->save($input);
 		return redirect('movies');
 	}
 
@@ -73,10 +74,10 @@ class MoviesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id,Request $request)
+	public function update($id,MovieRequest $request)
 	{
 		$movie = Movie::find($id);
-		$input = $request::all();
+		$input = $request->all();
 		$movie->update($input);
 		return redirect('movies');	
 	}

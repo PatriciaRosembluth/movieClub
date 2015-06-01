@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Review;
-use Request;
+use App\Http\Requests\ReviewRequest;
 
 class ReviewsController extends Controller {
 
@@ -32,10 +32,11 @@ class ReviewsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(ReviewRequest $request)
 	{
-		$input = $request::all();
-		Review::create($input);
+		$input = $request->all();
+		$review = new Review($input);
+		$review->save($input);
 		return redirect('movies');
 	}
 

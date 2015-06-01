@@ -13,6 +13,14 @@
 					<br>
 					@endforeach	
 
+					@if($errors->has())
+                    <div class='alert alert-danger'>
+                        @foreach ($errors->all('<p>:message</p>') as $message)
+                            {!! $message !!}
+                        @endforeach
+                    </div>
+                		@endif
+
                     {!! Form::open(['url'=>'reviews']) !!}
 					<br>
 					<div class="form-group">

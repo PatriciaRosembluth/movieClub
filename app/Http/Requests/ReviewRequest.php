@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class MovieRequest extends Request {
+class ReviewRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,18 +22,14 @@ class MovieRequest extends Request {
 	public function rules()
 	{
 		return [
-			"name" => "required|min:6",
-			"description" => "required|min:10"
+			"content" => "required"
 		];
 	}
 
 	public function messages()
 	{
 	    return [
-	        'name.required' => 'El campo name es requerido!',
-	        'name.min' => 'El campo name no puede tener menos de 6 carácteres',
-			'description.required' => 'El campo description es requerido!',
-	        'description.min' => 'El campo description no puede tener menos de 10 carácteres',
+	        'content.required' => 'El campo review es requerido!',
 	    ];
 	}
 
