@@ -38,8 +38,24 @@
 					<br><br>
 					
 					{!! Form::close() !!}
-              
-             
+
+					@foreach ($movie->ratings as $rating)
+                    Usuario: {{($rating->user == null) ? 'NA' : $rating->user->email}}
+					<br>
+					<p>Rating: {{$rating->value}}</p>
+					@endforeach	
+
+
+					{!! Form::open(['url'=>'ratings']) !!}
+					<br>
+					<div class="form-group">
+					{!!Form::selectRange('value', 0, 10); !!}
+					{!! Form::hidden('movie_id', $movie->id) !!}
+					</div>
+					{!! Form::submit('Qualify') !!}
+					<br><br>
+					
+					{!! Form::close() !!}
               <br>
               <a href="/movies">Back</a>
 		</div>
