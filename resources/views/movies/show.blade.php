@@ -5,8 +5,9 @@
 		<div class="col-md-5 col-md-offset-1">
              
                   
-                    <h1 width="500">{{ $movie->name }}</h1><br>
-                    <p width="60">{{ $movie->description}}</td><br>
+                    <h1 width="500">Name:{{ $movie->name }}</h1><br>
+                    <p width="60">Descripton:{{ $movie->description}}</td><br>
+                    <p width="60">Category:{{$movie->category}}</td><br>
                     <h3>Reviews:</h3><br>
                     @foreach ($movie->reviews as $review)
                     Usuario: {{($review->user == null) ? 'NA' : $review->user->email}}
@@ -31,13 +32,15 @@
                     {!! Form::open(['url'=>'reviews']) !!}
 					<br>
 					<div class="form-group">
-					{!! Form::textarea('content', null, ['class'=>'form-control', 'placeholder'=>'Review'])!!}
+					{!! Form::textarea('content', null, ['class'=>'form-control', 'placeholder'=>'Insert Review'])!!}
 					{!! Form::hidden('movie_id', $movie->id) !!}
 					</div>
 					{!! Form::submit('Save') !!}
 					<br><br>
-					
 					{!! Form::close() !!}
+
+					Number of ratings: {{$movie->number_rating}}
+					<br>
 
 					@foreach ($movie->ratings as $rating)
                     Usuario: {{($rating->user == null) ? 'NA' : $rating->user->email}}
@@ -45,7 +48,7 @@
 					<p>Rating: {{$rating->value}}</p>
 					@endforeach	
 
-
+					<h3>Rating:</h3>
 					{!! Form::open(['url'=>'ratings']) !!}
 					<br>
 					<div class="form-group">

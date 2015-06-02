@@ -24,6 +24,7 @@ class MovieRequest extends Request {
 		return [
 			"name" => "required|min:6",
 			"description" => "required|min:10"
+			
 		];
 	}
 

@@ -31,6 +31,11 @@
                     ['class'=>'form-control', 'placeholder'=>'Body'])
                 !!}
               </div>
+
+              <br>
+              {!!Form::select('category', array('Comedia'=>'Comedia','Drama'=>'Drama','Terror'=>'Terror'));!!}
+              <br>
+              <br>
  
               <div class="form-group">
                 {!! Form::submit('Guardar', ["class" => "btn btn-success btn-block"]) !!}

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddNumberRatingsToMovies extends Migration {
+class AddCategoryToMovie extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,7 +14,7 @@ class AddNumberRatingsToMovies extends Migration {
 	{
 		Schema::table('movies', function(Blueprint $table)
 		{
-			$table->integer('number_rating')->unsigned()->default(0);
+			$table->string('category')->default('');
 		});
 	}
 
@@ -27,7 +27,7 @@ class AddNumberRatingsToMovies extends Migration {
 	{
 		Schema::table('movies', function(Blueprint $table)
 		{
-			$table->dropColumn('number_rating');
+			$table->dropColumn('category');
 		});
 	}
 

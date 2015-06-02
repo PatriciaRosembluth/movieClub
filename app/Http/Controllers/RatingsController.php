@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Rating;
+use App\Movie;
 use Auth;
 use App\Http\Requests\RatingRequest;
 
@@ -42,6 +43,9 @@ class RatingsController extends Controller {
 		$input = $request->all();
 		$rating = new Rating($input);
 		Auth::user()->ratings()->save($rating);
+		// $movie = = Movie::find($rating->movie_id);
+		// $movie->number_rating += 1;
+		// $movie->save();
 		return redirect('movies');
 	}
 

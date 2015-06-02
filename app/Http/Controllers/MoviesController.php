@@ -98,4 +98,13 @@ class MoviesController extends Controller {
 		return redirect('movies');
 	}
 
+	public function number_rating($id)
+	{	
+		$movie = Movie::find($id);
+		$movie->number_rating += 1;
+		$movie->save();
+		return redirect('movies');
+	}
+
+
 }
