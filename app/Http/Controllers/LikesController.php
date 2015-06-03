@@ -2,36 +2,17 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Review;
-use App\Like;
-use App\Http\Requests\ReviewRequest;
+
+use Illuminate\Http\Request;
+
 use Auth;
-
-
-class ReviewsController extends Controller {
-
-	public function __construct(){
-		$this->middleware('auth');
-	}
+class LikesController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-
-	public function like($id)
-	{	
-		$review = Review::find($id);
-		$review->likes += 1;
-		$review->save();
-
-		$like = new Like;
-		$like->review_id = $id;
-		Auth::user()->likes()->save($like);
-		return redirect('movies');
-	}
-
 	public function index()
 	{
 		//
@@ -52,12 +33,10 @@ class ReviewsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(ReviewRequest $request)
+
+	public function store()
 	{
-		$input = $request->all();
-		$review = new Review($input);
-		Auth::user()->reviews()->save($review);
- 		return redirect('movies');
+		
 	}
 
 	/**
@@ -101,8 +80,7 @@ class ReviewsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		Review::destroy($id);
-		return redirect('movies');
+		//
 	}
 
 }

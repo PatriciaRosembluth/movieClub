@@ -15,6 +15,9 @@ Route::get('/', 'MoviesController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('/reviews/like/{id}', 'ReviewsController@like');
+
+
 Route::resource('reviews', 'ReviewsController');
 Route::resource('movies', 'MoviesController');
 Route::resource('ratings', 'RatingsController');

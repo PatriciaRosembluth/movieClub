@@ -13,6 +13,11 @@
                     Usuario: {{($review->user == null) ? 'NA' : $review->user->email}}
 					<br>
 					<p>{{$review->content}}</p>
+					<br>
+					Likes: {{$review->likes}}
+					
+					<br>
+					<a href="/reviews/like/{{$review->id}}">Like</a>
 					
 					{!! Form::open(array('route' => array('reviews.destroy', $review->id), 'method' => 'delete')) !!}
                     <button type="submit" class="btn btn-danger btn-mini">Delete</button>
